@@ -9,6 +9,7 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       Project.belongsTo(models.User, { foreignKey: 'userId' })
+      Project.hasMany(models.Pledge, { foreignKey: 'projectId' })
     }
   }
   Project.init(

@@ -10,7 +10,7 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       User.hasMany(models.Project, { foreignKey: 'userId' })
-      // User.hasMany(models.Pledge, { foreignKey: 'userId' })
+      User.hasMany(models.Pledge, { foreignKey: 'userId' })
     }
   }
   User.init(
