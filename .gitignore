@@ -3,3 +3,7 @@
 **/package-lock.json
 
 **/*.js
+
+!server/migrations/*
+!server/models/*
+!server/seeders/*
