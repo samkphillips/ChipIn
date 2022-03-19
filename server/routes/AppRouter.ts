@@ -10,5 +10,4 @@ router.use('/user', UserRouter)
 router.use('/project', ProjectRouter)
 router.use('/pledge', PledgeRouter)
 
-// module.exports = router
 export = router
