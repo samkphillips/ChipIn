@@ -17,7 +17,7 @@ module.exports = (sequelize, DataTypes) => {
       name: DataTypes.STRING,
       startDate: DataTypes.DATE,
       endDate: DataTypes.DATE,
-      goal: DataTypes.DECIMAL,
+      goal: DataTypes.FLOAT,
       campaign: DataTypes.TEXT,
       description: DataTypes.TEXT,
       tags: DataTypes.STRING,

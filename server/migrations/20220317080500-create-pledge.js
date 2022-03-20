@@ -13,7 +13,7 @@ module.exports = {
         allowNull: false
       },
       amount: {
-        type: Sequelize.DECIMAL,
+        type: Sequelize.FLOAT,
         allowNull: false
       },
       stripeData: {

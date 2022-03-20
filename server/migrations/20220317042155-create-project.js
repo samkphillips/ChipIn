@@ -18,7 +18,7 @@ module.exports = {
         type: Sequelize.DATE
       },
       goal: {
-        type: Sequelize.DECIMAL
+        type: Sequelize.FLOAT
       },
       campaign: {
         type: Sequelize.TEXT
