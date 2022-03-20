@@ -1,3 +1,6 @@
-export {}
+import Client from "./api"
 
-//protected routes will live here, once those come up
+export const CreateNewProject = async (data: any) => {
+  const res = await Client.post('/project/new', data)
+  return res.data
+}

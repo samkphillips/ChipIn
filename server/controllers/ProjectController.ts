@@ -11,6 +11,24 @@ const GetAllProjects = async (req, res) => {
   }
 }
 
+const CreateProject = async (req, res) => {
+  try {
+    const result = await Project.create({
+      name: 'Untitled Project',
+      startDate: '2025-01-01',
+      endDate: '2025-01-30',
+      goal: 0.0,
+      campaign: '',
+      description: '',
+      tags: '',
+      userId: req.body.user_id
+    })
+    res.send(result)
+  } catch (error) {
+    throw error
+  }
+}
+
 const FindProjectsByUserId = async (req, res) => {
   const projects = await Project.findAll({
     where: { userId: req.params.user_id }
@@ -28,6 +46,7 @@ const FindProjectById = async (req, res) => {
 
 export = {
   GetAllProjects,
+  CreateProject,
   FindProjectById,
   FindProjectsByUserId
 }
