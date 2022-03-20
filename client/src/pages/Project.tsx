@@ -15,6 +15,7 @@ const iStateInfo = {
   description: '',
   tags: '',
   userId: 0,
+  publishReady: false,
   createdAt: '',
   updatedAt: '',
   Pledges: []

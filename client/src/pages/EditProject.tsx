@@ -4,7 +4,7 @@ import axios from 'axios'
 import { BASE_URL } from '../globals'
 import '../styles/App.css'
 
-import { Button, TextField } from '@material-ui/core'
+import { Button, Checkbox, TextField } from '@material-ui/core'
 
 const iStateInfo = {
   id: 0,
@@ -16,6 +16,7 @@ const iStateInfo = {
   description: '',
   tags: '',
   userId: 0,
+  publishReady: false,
   createdAt: '',
   updatedAt: ''
 }
@@ -35,7 +36,7 @@ function EditProject( { user }: any ) {
   const projectHandleChange = (e: any) => {
     setProjectFormValues({
       ...projectFormValues,
-      [e.target.name]: e.target.value
+      [e.target.name]: e.target.value || e.target.checked
     })
   }
 
@@ -45,7 +46,8 @@ function EditProject( { user }: any ) {
       name: projectFormValues.name,
       goal: projectFormValues.goal,
       campaign: projectFormValues.campaign,
-      description: projectFormValues.description
+      description: projectFormValues.description,
+      publishReady: projectFormValues.publishReady
     })
     navigate('/myaccount')
     console.log("Submitted.")
@@ -95,6 +97,12 @@ function EditProject( { user }: any ) {
             required
             variant="filled"
           />
+          <Checkbox 
+            onChange={projectHandleChange}
+            name="publishReady"
+            checked={projectFormValues.publishReady}
+          />
+          <label>Ready to publish?</label>
           <Button type='submit'>
             Save Changes
           </Button>
