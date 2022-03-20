@@ -18,8 +18,7 @@ function Home(props: any) {
 
   return (
     <div>
-      Home page!
-      <p>Here's all the projects:</p>
+      <p>Published Projects:</p>
       {projects.length > 0 ? (
         projects.map((item: any) => (
           item.publishReady && (

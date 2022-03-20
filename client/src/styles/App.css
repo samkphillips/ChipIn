@@ -25,3 +25,20 @@ nav {
   flex-direction: column;
   max-width: 70vw;
 }
+
+.project-card {
+  width: 15em;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.project-card:hover {
+  cursor: pointer;
+  background-color: cornflowerblue;
+}
+
+.progress-bar {
+  max-width: 60%;
+}

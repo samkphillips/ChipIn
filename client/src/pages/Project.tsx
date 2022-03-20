@@ -37,6 +37,10 @@ function Project( { user }: any ) {
     navigate(`/editproject/${projectInfo.id}`)
   }
 
+  const moveToBack = () => {
+    navigate(`/backproject/${projectInfo.id}`)
+  }
+
   let pledgeSum = 0
 
   const updatePledgeSum = () => {
@@ -53,6 +57,7 @@ function Project( { user }: any ) {
 
   useEffect(() => {
     setIsOwner( Number(user.id) === projectInfo.userId )
+    updatePledgeSum()
   }, [projectInfo])
 
   return (
@@ -61,6 +66,7 @@ function Project( { user }: any ) {
       <h1>{projectInfo.name}</h1>
       <p>{projectInfo.campaign}</p>
       <h3>Funding: ${pledgeSum} / ${projectInfo.goal}</h3>
+      <Button color="primary" variant="contained" onClick={moveToBack}>Back This Project</Button>
     </div>
   )
 }

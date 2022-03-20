@@ -29,7 +29,6 @@ export default function Nav( { authenticated, user, handleLogOut }: any ) {
 
   return (
     <header>
-      <NavLink to="/" className="fake-logo">ChipIn</NavLink>
       {authenticated && user ? authenticatedOptions : publicOptions}
     </header>
   )

@@ -4,7 +4,9 @@ const Op = Sequelize.Op
 
 const GetAllProjects = async (req, res) => {
   try {
-    const projects = await Project.findAll()
+    const projects = await Project.findAll({
+      include: [Pledge]
+    })
     res.send(projects)
   } catch (error) {
     throw error
@@ -31,7 +33,8 @@ const CreateProject = async (req, res) => {
 
 const FindProjectsByUserId = async (req, res) => {
   const projects = await Project.findAll({
-    where: { userId: req.params.user_id }
+    where: { userId: req.params.user_id },
+    include: [Pledge]
   })
   res.send(projects)
 }

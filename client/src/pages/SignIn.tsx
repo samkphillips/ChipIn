@@ -103,6 +103,7 @@ export default function SignIn(props: any) {
           </div>
           <Button
             type='submit'
+            color="primary" variant="contained"
             disabled={!signInFormValues.email || !signInFormValues.password}
           >
             Sign In
@@ -162,6 +163,7 @@ export default function SignIn(props: any) {
           </div>
           <Button
             type='submit'
+            color="primary" variant="contained"
             disabled={
               !registerFormValues.username ||
               !registerFormValues.email ||
