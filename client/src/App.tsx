@@ -15,6 +15,8 @@ import { CheckSession } from './services/Auth'
 
 import './styles/App.css'
 
+import { CircularProgress } from '@material-ui/core'
+
 function App() {
   const initializeAuth = () => {
     let storedAuth = localStorage.getItem('authenticated')
@@ -57,7 +59,8 @@ function App() {
     <div className="App">
       {loading ? (
         <div>
-          <h3>Loading</h3>
+          {/* Loading indicator */}
+          <CircularProgress />
         </div>
       ) : (
         <div>

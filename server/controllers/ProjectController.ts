@@ -1,4 +1,4 @@
-const { Project } = require('../models')
+const { Project, Pledge } = require('../models')
 const Sequelize = require('sequelize')
 const Op = Sequelize.Op
 
@@ -19,11 +19,14 @@ const FindProjectsByUserId = async (req, res) => {
 }
 
 const FindProjectById = async (req, res) => {
-  const project = await Project.findByPk(req.params.project_id)
+  const project = await Project.findOne({
+    where: { id: req.params.project_id },
+    include: [Pledge]
+  })
   res.send(project)
 }
 
-module.exports = {
+export = {
   GetAllProjects,
   FindProjectById,
   FindProjectsByUserId
