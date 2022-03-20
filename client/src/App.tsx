@@ -1,17 +1,25 @@
 import { useState, useEffect } from 'react'
 import { Route, Routes } from 'react-router'
+
 import Nav from './components/Nav'
+
 import Home from './pages/Home'
 import AboutUs from './pages/AboutUs'
 import SignIn from './pages/SignIn'
+import MyAccount from './pages/MyAccount'
+import Project from './pages/Project'
+import BackProject from './pages/BackProject'
+import EditProject from './pages/EditProject'
+
 import { CheckSession } from './services/Auth'
+
 import './styles/App.css'
 
 function App() {
   const initializeAuth = () => {
     let storedAuth = localStorage.getItem('authenticated')
 
-    if (storedAuth === null || storedAuth === '0') {
+    if (storedAuth === null || storedAuth !== '1') {
       return false
     } else {
       return true
@@ -63,6 +71,22 @@ function App() {
               <Route 
                 path="/"
                 element={<Home />}
+              />
+              <Route 
+                path="/project/:project_id"
+                element={<Project />}
+              />
+              <Route 
+                path="/editproject/:project_id"
+                element={<EditProject />}
+              />
+              <Route 
+                path="/backproject/:project_id"
+                element={<BackProject />}
+              />
+              <Route 
+                path="/myaccount"
+                element={<MyAccount user={user} />}
               />
               <Route 
                 path="/aboutus"

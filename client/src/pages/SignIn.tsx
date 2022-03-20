@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import { useNavigate } from 'react-router'
 import { SignInUser, RegisterUser } from '../services/Auth'
+import { Button } from '@material-ui/core'
 
 const iStateSignIn = {
   email: '',
@@ -73,7 +74,7 @@ export default function SignIn(props: any) {
 
   return (
     <div className="sign-in-page">
-      <button onClick={signInGuest}>Guest Sign-In</button>
+      <Button color="primary" variant="contained" onClick={signInGuest}>Guest Sign-In</Button>
       <div className="sign-in-split">
         <h1>Sign In</h1>
         <form onSubmit={signInHandleSubmit}>
