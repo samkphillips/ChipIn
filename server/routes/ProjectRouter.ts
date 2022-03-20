@@ -11,5 +11,6 @@ router.post(
 )
 router.get('/search/id/:project_id', controller.FindProjectById)
 router.get('/search/user/:user_id', controller.FindProjectsByUserId)
+router.put('/update/:project_id', controller.UpdateProject)
 
 export = router

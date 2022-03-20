@@ -16,7 +16,8 @@ const iStateInfo = {
   tags: '',
   userId: 0,
   createdAt: '',
-  updatedAt: ''
+  updatedAt: '',
+  Pledges: []
 }
 
 function Project( { user }: any ) {
@@ -31,19 +32,22 @@ function Project( { user }: any ) {
     setIsOwner( Number(user.id) === projectInfo.userId)
   }
 
-  const parseMarkdown = (mark: string) => {
-    //do some fancy parsing here
-    // setProjectInfo({...projectInfo, campaign: parsedCampaign}) ???
-    return mark
-  }
-
   const moveToEdit = () => {
     navigate(`/editproject/${projectInfo.id}`)
   }
 
+  let pledgeSum = 0
+
+  const updatePledgeSum = () => {
+    pledgeSum = 0
+
+    projectInfo.Pledges.forEach((p: any) => {
+      pledgeSum += p.amount
+    })
+  }
+
   useEffect(() => {
     getInfo()
-    // parseCampaignMarkdown()
   }, [])
 
   useEffect(() => {
@@ -52,11 +56,10 @@ function Project( { user }: any ) {
 
   return (
     <div>
-      Project detail page.
-      This is project ID : {params.project_id}
-      <p>{projectInfo.name}</p>
-      <p>{parseMarkdown(projectInfo.campaign)}</p>
       {isOwner && ( <Button color="primary" variant="contained" onClick={moveToEdit}>Edit</Button> )}
+      <h1>{projectInfo.name}</h1>
+      <p>{projectInfo.campaign}</p>
+      <h3>Funding: ${pledgeSum} / ${projectInfo.goal}</h3>
     </div>
   )
 }

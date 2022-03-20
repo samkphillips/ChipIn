@@ -1,6 +1,10 @@
 * {
   padding: 0;
-  margin: 0;
+  margin: 5px;
+}
+
+.App {
+  text-align: center;
 }
 
 header {
@@ -14,4 +18,10 @@ nav {
 
 .navlinks {
   margin: 0 10px;
+}
+
+.project-form {
+  display: flex;
+  flex-direction: column;
+  max-width: 70vw;
 }

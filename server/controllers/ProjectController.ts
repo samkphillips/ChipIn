@@ -44,9 +44,18 @@ const FindProjectById = async (req, res) => {
   res.send(project)
 }
 
+const UpdateProject = async (req, res) => {
+  const project = await Project.findOne({
+    where: { id: req.params.project_id }
+  })
+  await project.update({ ...req.body })
+  res.send({ status: 'success', msg: 'Project Updated' })
+}
+
 export = {
   GetAllProjects,
   CreateProject,
   FindProjectById,
-  FindProjectsByUserId
+  FindProjectsByUserId,
+  UpdateProject
 }

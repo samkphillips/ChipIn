@@ -21,6 +21,7 @@ module.exports = (sequelize, DataTypes) => {
       campaign: DataTypes.TEXT,
       description: DataTypes.TEXT,
       tags: DataTypes.STRING,
+      publishReady: DataTypes.BOOLEAN,
       userId: {
         type: DataTypes.INTEGER,
         onDelete: 'CASCADE',

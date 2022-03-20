@@ -38,6 +38,7 @@ module.exports = {
       campaign: 'Lorem ipsum et cetera',
       description: 'Cool Shirts for Cool Folks',
       tags: 'Apparel',
+      publishReady: false,
       userId: 1,
       createdAt: '2022-01-02',
       updatedAt: '2022-01-03'

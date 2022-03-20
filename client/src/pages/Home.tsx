@@ -22,10 +22,12 @@ function Home(props: any) {
       <p>Here's all the projects:</p>
       {projects.length > 0 ? (
         projects.map((item: any) => (
-          <ProjectCard 
-            key={`Card-${item.name}-${item.id}`}
-            info={item} 
-          />
+          item.publishReady && (
+            <ProjectCard 
+              key={`Card-${item.name}-${item.id}`}
+              info={item} 
+            />
+          )
         ))
       ) : (
         <p>Oops no projects.</p>

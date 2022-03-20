@@ -29,6 +29,9 @@ module.exports = {
       tags: {
         type: Sequelize.STRING
       },
+      publishReady: {
+        type: Sequelize.BOOLEAN
+      },
       userId: {
         type: Sequelize.INTEGER,
         onDelete: 'CASCADE',
