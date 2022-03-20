@@ -103,7 +103,7 @@ function EditProject( { user }: any ) {
             checked={projectFormValues.publishReady}
           />
           <label>Ready to publish?</label>
-          <Button type='submit'>
+          <Button color="primary" variant="contained" type='submit'>
             Save Changes
           </Button>
         </div>
