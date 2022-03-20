@@ -1,10 +1,12 @@
 import React, { useState, useEffect } from 'react'
 import axios from 'axios'
 import { BASE_URL } from '../globals'
-import { useParams } from 'react-router'
+import { useParams, useNavigate } from 'react-router'
 import '../styles/App.css'
+import { Button } from '@material-ui/core'
 
 const iStateInfo = {
+  id: 0,
   name: '',
   startDate: '',
   endDate: '',
@@ -17,18 +19,26 @@ const iStateInfo = {
   updatedAt: ''
 }
 
-function Project() {
+function Project( { user }: any ) {
   const [projectInfo, setProjectInfo] = useState(iStateInfo)
+  const [isOwner,setIsOwner] = useState(false)
   let params = useParams()
+  let navigate = useNavigate()
 
   const getInfo = async () => {
     const res = await axios.get(`${BASE_URL}/project/search/id/${params.project_id}`)
     setProjectInfo(res.data)
+    setIsOwner( Number(user.id) === projectInfo.userId)
   }
 
-  const parseCampaignMarkdown = () => {
+  const parseMarkdown = (mark: string) => {
     //do some fancy parsing here
-    // setProjectInfo({...projectInfo, campaign: parsedCampaign})
+    // setProjectInfo({...projectInfo, campaign: parsedCampaign}) ???
+    return mark
+  }
+
+  const moveToEdit = () => {
+    navigate(`/editproject/${projectInfo.id}`)
   }
 
   useEffect(() => {
@@ -36,12 +46,17 @@ function Project() {
     // parseCampaignMarkdown()
   }, [])
 
+  useEffect(() => {
+    setIsOwner( Number(user.id) === projectInfo.userId )
+  }, [projectInfo])
+
   return (
     <div>
       Project detail page.
       This is project ID : {params.project_id}
       <p>{projectInfo.name}</p>
-      <p>{projectInfo.campaign}</p>
+      <p>{parseMarkdown(projectInfo.campaign)}</p>
+      {isOwner && ( <Button color="primary" variant="contained" onClick={moveToEdit}>Edit</Button> )}
     </div>
   )
 }

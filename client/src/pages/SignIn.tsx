@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { useNavigate } from 'react-router'
 import { SignInUser, RegisterUser } from '../services/Auth'
-import { Button } from '@material-ui/core'
+import { Button, TextField } from '@material-ui/core'
 
 const iStateSignIn = {
   email: '',
@@ -79,31 +79,34 @@ export default function SignIn(props: any) {
         <h1>Sign In</h1>
         <form onSubmit={signInHandleSubmit}>
           <div>
-            <label htmlFor="email">Email</label>
-            <input
+            <TextField
               onChange={signInHandleChange}
               name="email"
+              label="Email"
               type="email"
               placeholder="example@example.com"
               value={signInFormValues.email}
               required
+              variant="filled"
             />
           </div>
           <div>
-            <label htmlFor="password">Password</label>
-            <input
+            <TextField
               onChange={signInHandleChange}
               type="password"
               name="password"
+              label="Password"
               value={signInFormValues.password}
               required
+              variant="filled"
             />
           </div>
-          <button
+          <Button
+            type='submit'
             disabled={!signInFormValues.email || !signInFormValues.password}
           >
             Sign In
-          </button>
+          </Button>
         </form>
       </div>
 
@@ -111,49 +114,54 @@ export default function SignIn(props: any) {
         <h1>Sign Up</h1>
         <form onSubmit={registerHandleSubmit}>
           <div>
-            <label htmlFor="username">Username</label>
-            <input
+            <TextField
               onChange={registerHandleChange}
               name="username"
               type="text"
-              placeholder="John Smith"
+              placeholder="JohnSmith"
+              label="Username"
               value={registerFormValues.username}
               required
+              variant="filled"
             />
           </div>
           <div>
-            <label htmlFor="email">Email</label>
-            <input
+            <TextField
               onChange={registerHandleChange}
               name="email"
               type="email"
+              label="Email"
               placeholder="example@example.com"
               value={registerFormValues.email}
               required
+              variant="filled"
             />
           </div>
 
           <div>
-            <label htmlFor="password">Password</label>
-            <input
+            <TextField
               onChange={registerHandleChange}
               type="password"
               name="password"
+              label="Password"
               value={registerFormValues.password}
               required
+              variant="filled"
             />
           </div>
           <div>
-            <label htmlFor="confirmPassword">Confirm Password</label>
-            <input
+            <TextField
               onChange={registerHandleChange}
               type="password"
               name="confirmPassword"
+              label="Confirm Password"
               value={registerFormValues.confirmPassword}
               required
+              variant="filled"
             />
           </div>
-          <button
+          <Button
+            type='submit'
             disabled={
               !registerFormValues.username ||
               !registerFormValues.email ||
@@ -162,7 +170,7 @@ export default function SignIn(props: any) {
             }
           >
             Sign Up
-          </button>
+          </Button>
         </form>
       </div>
     </div>

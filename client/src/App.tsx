@@ -64,10 +64,7 @@ function App() {
         </div>
       ) : (
         <div>
-          <header>
-            <Nav authenticated={authenticated} user={user} handleLogOut={handleLogOut} />
-            <p>Howdy</p>
-          </header>
+          <Nav authenticated={authenticated} user={user} handleLogOut={handleLogOut} />
 
           <main>
             <Routes>
@@ -77,7 +74,7 @@ function App() {
               />
               <Route 
                 path="/project/:project_id"
-                element={<Project />}
+                element={<Project user={user} />}
               />
               <Route 
                 path="/editproject/:project_id"
